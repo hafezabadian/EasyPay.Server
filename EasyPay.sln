@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPay.Services", "EasyPay
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPay.Infrastructure", "EasyPay.Infrastructure\EasyPay.Infrastructure.csproj", "{DBDE9875-E1EB-4723-A902-D3A67B1485BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPay.Presentation", "EasyPay.Presentation\EasyPay.Presentation.csproj", "{E0384FD8-F3D2-46CA-AFF3-6A39F95F3BFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPay.Presentation", "EasyPay.Presentation\EasyPay.Presentation.csproj", "{E0384FD8-F3D2-46CA-AFF3-6A39F95F3BFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
