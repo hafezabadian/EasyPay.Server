@@ -8,10 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
     <Folder Include="Model\" />
-    <Folder Include="DatabaseContext\" />
-    <Folder Include="Infrastructure\" />
 	
   </ItemGroup>
 

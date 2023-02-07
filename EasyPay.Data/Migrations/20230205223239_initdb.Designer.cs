@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EasyPay.Data.Migrations
 {
-    [DbContext(typeof(EasyPayDbcontext))]
+    [DbContext(typeof(EasyPayDbContext))]
     [Migration("20230205223239_initdb")]
     partial class initdb
     {

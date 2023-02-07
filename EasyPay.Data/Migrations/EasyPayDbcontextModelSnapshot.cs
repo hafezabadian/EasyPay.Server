@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EasyPay.Data.Migrations
 {
-    [DbContext(typeof(EasyPayDbcontext))]
-    partial class EasyPayDbcontextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(EasyPayDbContext))]
+    partial class EasyPayDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

@@ -90,6 +90,7 @@ namespace EasyPay.Repo.Infrastructure
         }
         #endregion
 
+        #region Dispose
         private bool disposed = false;
         public virtual void Dispose(bool desposing)
         {
@@ -100,7 +101,7 @@ namespace EasyPay.Repo.Infrastructure
                     _db.Dispose();
                 }
             }
-            disposed= true;
+            disposed = true;
         }
         public void Dispose()
         {
@@ -109,6 +110,7 @@ namespace EasyPay.Repo.Infrastructure
         }
 
         ~Repository() { Dispose(false); }
+        #endregion
 
     }
 }

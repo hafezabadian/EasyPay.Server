@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EasyPay.Repo.Repositories.Interface;
+using EasyPay.Repo.Repositories.Repositoriy;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace EasyPay.Repo.Infrastructure
@@ -11,6 +13,23 @@ namespace EasyPay.Repo.Infrastructure
         {
             _db = new TContext();
         }
+        #endregion
+
+        #region private repositories
+        private IUserRipository userRipository;
+        public IUserRipository UserRipository 
+        { 
+            get 
+            {
+                if(userRipository == null)
+                {
+                    userRipository = new UserRepository(_db);
+                }
+                return userRipository;
+            } 
+        }
+
+
         #endregion
 
         #region save
@@ -43,7 +62,6 @@ namespace EasyPay.Repo.Infrastructure
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
         ~UnitOfWork()
         {
             Dispose(false);

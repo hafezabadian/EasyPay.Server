@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EasyPay.Data.DatabaseContext;
+using EasyPay.Data.Model;
+using EasyPay.Repo.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +11,40 @@ namespace EasyPay.Presentation.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private IUnitOfWork<EasyPayDbContext> _db;
+        public ValuesController(IUnitOfWork<EasyPayDbContext> unitOfWork)
+        {
+            _db= unitOfWork;
+        }
+
+
         // GET: api/<ValuesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult<IEnumerable<User>>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var user = new User()
+            {
+                Address = "",
+                City = "",
+                DateOfBirth = "",
+                Gender = "",
+                IsAcive = true,
+                Name = "",
+
+                PasswordHash = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, },
+                PasswordSalt = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, },
+
+                PhoneNumber = "",
+                Status = true,
+                UserName = ""
+            };
+
+            await _db.UserRipository.AddAsync(user);
+            await _db.SaveAsync();
+
+            var model = await _db.UserRipository.GetAllAsync();
+
+            return Ok(model);
         }
 
         // GET api/<ValuesController>/5
