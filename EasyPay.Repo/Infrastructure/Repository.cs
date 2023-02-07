@@ -1,12 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EasyPay.Data.Infrastructure
+
+namespace EasyPay.Repo.Infrastructure
 {
     internal abstract class Repository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class
     {

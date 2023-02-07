@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EasyPay.Data.DatabaseContext
 {
-    internal class EasyPayDbcontext : DbContext
+    public class EasyPayDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {

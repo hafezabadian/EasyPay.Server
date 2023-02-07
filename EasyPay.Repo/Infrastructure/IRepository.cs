@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using System.Linq.Expressions;
-using Microsoft.Identity.Client;
 
-namespace EasyPay.Data.Infrastructure
+
+namespace EasyPay.Repo.Infrastructure
 {
     public interface IRepository<TEntity> where TEntity : class 
     {
