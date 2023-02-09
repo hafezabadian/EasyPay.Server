@@ -25,7 +25,7 @@ namespace EasyPay.Common.Helper
 
                 for (int i = 0; i < computedHash.Length; i++)
                 {
-                    if (computedHash[i] != salt[i])
+                    if (computedHash[i] != hash[i])
                     {
                         return false;
                     }
