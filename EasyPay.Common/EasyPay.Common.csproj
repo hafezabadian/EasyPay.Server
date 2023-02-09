@@ -11,8 +11,4 @@
     <ProjectReference Include="..\EasyPay.Data\EasyPay.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ErrorAndMessage\" />
-  </ItemGroup>
-
 </Project>

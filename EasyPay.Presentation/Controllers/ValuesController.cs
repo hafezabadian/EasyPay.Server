@@ -26,8 +26,8 @@ namespace EasyPay.Presentation.Controllers
             {
                 Address = "",
                 City = "",
-                DateOfBirth = "",
-                Gender = "",
+                DateOfBirth = DateTime.Now,
+                Gender = true,
                 IsAcive = true,
                 Name = "",
 
