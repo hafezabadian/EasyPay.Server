@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPay.Repo", "EasyPay.Rep
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPay.Services", "EasyPay.Services\EasyPay.Services.csproj", "{0FAB12B7-08EA-49FD-9772-7451B498F773}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPay.Infrastructure", "EasyPay.Infrastructure\EasyPay.Infrastructure.csproj", "{DBDE9875-E1EB-4723-A902-D3A67B1485BA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyPay.Presentation", "EasyPay.Presentation\EasyPay.Presentation.csproj", "{E0384FD8-F3D2-46CA-AFF3-6A39F95F3BFF}"
 EndProject
 Global
@@ -37,10 +35,6 @@ Global
 		{0FAB12B7-08EA-49FD-9772-7451B498F773}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FAB12B7-08EA-49FD-9772-7451B498F773}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FAB12B7-08EA-49FD-9772-7451B498F773}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBDE9875-E1EB-4723-A902-D3A67B1485BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBDE9875-E1EB-4723-A902-D3A67B1485BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBDE9875-E1EB-4723-A902-D3A67B1485BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBDE9875-E1EB-4723-A902-D3A67B1485BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E0384FD8-F3D2-46CA-AFF3-6A39F95F3BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E0384FD8-F3D2-46CA-AFF3-6A39F95F3BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0384FD8-F3D2-46CA-AFF3-6A39F95F3BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU

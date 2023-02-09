@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Dto\Api\" />
+    <Folder Include="Dto\Site\Admin\" />
+    <Folder Include="Dto\Site\App\" />
     <Folder Include="Model\" />
 	
   </ItemGroup>

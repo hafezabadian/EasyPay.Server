@@ -16,6 +16,7 @@ namespace EasyPay.Repo.Infrastructure
         }
         #endregion
 
+
         #region normal
         public void Add(TEntity entity)
         {
@@ -66,7 +67,6 @@ namespace EasyPay.Repo.Infrastructure
         #endregion
 
 
-
         #region Async
         public async Task AddAsync(TEntity entity)
         {
@@ -89,6 +89,7 @@ namespace EasyPay.Repo.Infrastructure
             return await _dbSet.Where(expression).ToListAsync();
         }
         #endregion
+
 
         #region Dispose
         private bool disposed = false;
