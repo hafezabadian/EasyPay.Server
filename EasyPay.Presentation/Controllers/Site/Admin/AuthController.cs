@@ -73,12 +73,14 @@ namespace EasyPay.Presentation.Controllers.Site.Admin
             var userFromRepo = await _authService.Login(useForLoginDto.UserName, useForLoginDto.Password);
 
             if (userFromRepo == null)
-                return Unauthorized(new ReturnMessage()
-                {
-                    status = false,
-                    title = "خطا",
-                    message = "کاربری با این یوزر و پس وجود ندارد"
-                });
+                return Unauthorized("کاربری با این یوزر و پس وجود ندارد");
+
+                //return Unauthorized(new ReturnMessage()
+                //{
+                //    status = false,
+                //    title = "خطا",
+                //    message = "کاربری با این یوزر و پس وجود ندارد"
+                //});
 
             var claims = new[]
             {
