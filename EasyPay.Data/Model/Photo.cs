@@ -11,8 +11,11 @@ namespace EasyPay.Data.Model
             DateModified = DateTime.Now;
         }
         [Required]
+        [StringLength(1000)]
         public string Url { get; set; }
+        [StringLength(500)]
         public string Description { get; set; }
+        [StringLength(500)]
         public string Alt { get; set; }
         [Required]
         public bool IsMain { get; set; }

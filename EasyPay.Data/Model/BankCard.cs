@@ -11,10 +11,15 @@ namespace EasyPay.Data.Model
             DateModified=DateTime.Now;
         }
         [Required]
+        [StringLength(50)]
         public string BankName { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string OwnerName { get; set; }
+        [StringLength(50, MinimumLength = 20)]
         public string Shaba { get; set; }
         [Required]
-        [Range(16, 16)]
+        [StringLength(20,MinimumLength = 16)]
         public string CardNumber { get; set; }
         [Required]
         [StringLength(2, MinimumLength = 2)]

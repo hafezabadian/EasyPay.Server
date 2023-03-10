@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Net;
 using System.Text;
 using Azure;
+using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,25 +43,44 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 else
-{
+    {
     app.UseExceptionHandler(builder =>
     {
-        builder.Run(async context => {
+        builder.Run(async context =>
+        {
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
+            context.Response.ContentType = Text.Plain;
             var error = context.Features.Get<IExceptionHandlerFeature>();
+
             if (error != null)
             {
-                //context.Response.AddAppErorr(error.Error.Message);
-                context.Response.Headers.Add("App-Error", error.Error.Message);
-                context.Response.Headers.Add("Access-Control-Expose-Headers", "App-Error");
-                context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                context.Response.AddAppError(error.Error.Message);
+                //context.Response.Headers.Add("App-Error", error.Error.Message);
+                //context.Response.Headers.Add("Access-Control-Expose-Headers", "App-Error");
+                //context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
                 await context.Response.WriteAsync(error.Error.Message);
             }
         });
     });
 }
+//app.Use(async (context, next) =>
+//{
+//    var error = context.Features.Get<IExceptionHandlerFeature>();
+//    if (error != null)
+//    {
+//    //context.Response.AddAppError(error.Error.Message);
+//    //context.Response.Headers.Add("App-Error", error.Error.Message);
+//    //context.Response.Headers.Add("Access-Control-Expose-Headers", "App-Error");
+//    //context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+//    }
+//    //context.Response.Headers.Add("App-Error", error.Error.Message);
+//    context.Response.Headers.Add("x-my-custom-header", "middleware response");
+//    await next();
+//});
+
 app.UseCors(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseHttpsRedirection();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EasyPay.Common.Helper
 {
-    internal static class Extensions
+    public static class Extensions
     {
         public static void AddAppError(this HttpResponse response, string message)
         {
