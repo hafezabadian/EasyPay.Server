@@ -36,7 +36,7 @@ namespace EasyPay.Presentation.Controllers.Site.Admin
         public async Task<ActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
             userForRegisterDto.UserName = userForRegisterDto.UserName.ToLower();
-            if (await _db.UserRipository.UserExists(userForRegisterDto.UserName))
+            if (await _db.UserRipository.UserExistsAsync(userForRegisterDto.UserName))
             {
                 return BadRequest(
                     new ReturnMessage {

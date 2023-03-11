@@ -14,9 +14,16 @@ namespace EasyPay.Repo.Repositories.Repositoriy
             _db = _db ?? (EasyPayDbContext)_db;
         }
 
-        public async Task<bool> UserExists(string username)
+        public async Task<bool> UserExistsAsync(string username)
         {
             if (await GetAsync(p => p.UserName == username) == null)
+                return false;
+            return true;
+        }
+
+        public bool UserExists(string username)
+        {
+            if (Get(p => p.UserName == username) == null)
                 return false;
             return true;
         }

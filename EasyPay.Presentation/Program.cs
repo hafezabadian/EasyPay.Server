@@ -10,6 +10,8 @@ using System.Net;
 using System.Text;
 using Azure;
 using static System.Net.Mime.MediaTypeNames;
+using EasyPay.Services.Seed.Interface;
+using EasyPay.Services.Seed.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
 builder.Services.AddScoped<IUnitOfWork<EasyPayDbContext>, UnitOfWork<EasyPayDbContext>>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ISeedService, SeedService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opt =>
                 {
@@ -36,6 +39,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 });
 
 var app = builder.Build();
+
+// ---------| Dependency Injection & Using Service at project startup |----------
+//using (var serviceScope = app.Services.CreateScope())
+//{
+//    var services = serviceScope.ServiceProvider;
+
+//    var Seeder = services.GetRequiredService<ISeedService>();
+//    Seeder.SeedUser();
+//}
+// ------------------------------------------------------------------------------
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -80,6 +93,8 @@ else
 //    context.Response.Headers.Add("x-my-custom-header", "middleware response");
 //    await next();
 //});
+
+
 
 app.UseCors(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 

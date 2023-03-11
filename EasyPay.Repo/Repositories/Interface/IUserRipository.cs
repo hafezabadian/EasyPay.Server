@@ -5,6 +5,7 @@ namespace EasyPay.Repo.Repositories.Interface
 {
     public interface IUserRipository : IRepository<User>
     {
-        Task<bool> UserExists(string username);
+        Task<bool> UserExistsAsync(string username);
+        Boolean UserExists(string username);
     }
 }
