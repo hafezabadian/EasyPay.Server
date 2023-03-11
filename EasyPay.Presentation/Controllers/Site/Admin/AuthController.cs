@@ -33,7 +33,7 @@ namespace EasyPay.Presentation.Controllers.Site.Admin
         // Register: site/admin/<ValuesController>
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<ActionResult> Register(UserForRegisterDto userForRegisterDto)
+        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
             userForRegisterDto.UserName = userForRegisterDto.UserName.ToLower();
             if (await _db.UserRipository.UserExistsAsync(userForRegisterDto.UserName))
