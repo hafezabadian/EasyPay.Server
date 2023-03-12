@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.Linq.Expressions;
 
 
@@ -60,9 +61,25 @@ namespace EasyPay.Repo.Infrastructure
             return _dbSet.Where(expression).FirstOrDefault();
         }
         
-        public IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> expression)
+        public IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderby = null, string IncludeEntity = "")
         {
-            return _dbSet.Where(expression).AsEnumerable();
+            IQueryable<TEntity> query = _dbSet;
+            if (filter != null)
+            { query = query.Where(filter); }
+            
+            foreach (var includeentity in IncludeEntity.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeentity);
+            }
+
+            if (orderby != null)
+            {
+                return orderby(query).AsEnumerable();
+            }
+            else
+            {
+                return query.AsEnumerable();
+            }
         }
         #endregion
 
@@ -84,9 +101,29 @@ namespace EasyPay.Repo.Infrastructure
         {
             return await _dbSet.FindAsync(id);
         }
-        public async Task<IEnumerable<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> expression)
+
+        public async Task<IEnumerable<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>>? filter, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderby, string? IncludeEntity)
         {
-            return await _dbSet.Where(expression).ToListAsync();
+            IQueryable<TEntity> query = _dbSet;
+            if (filter != null)
+            { query = query.Where(filter); }
+
+            if (IncludeEntity != null)
+            {
+                foreach (var includeentity in IncludeEntity.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeentity);
+                }
+            }
+
+            if (orderby != null)
+            {
+                return await orderby(query).ToListAsync();
+            }
+            else
+            {
+                return await query.ToListAsync();
+            }
         }
         #endregion
 

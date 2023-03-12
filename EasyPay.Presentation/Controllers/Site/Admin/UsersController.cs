@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EasyPay.Data.DatabaseContext;
 using EasyPay.Data.Dto.Site.Admin.Users;
+using EasyPay.Data.Model;
 using EasyPay.Repo.Infrastructure;
 using EasyPay.Services.Auth.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -26,7 +27,8 @@ namespace EasyPay.Presentation.Controllers.Site.Admin
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            var Users = await _db.UserRipository.GetAllAsync();
+            var Users = await _db.UserRipository.GetManyAsync(p=>p.IsAcive, mt => mt.OrderByDescending(m => m.Name), "Photos,BankCards");
+            //var Users = await _db.UserRipository.GetManyAsync(null, null, null);
             var UsersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(Users);
             return Ok(UsersToReturn);
         }
@@ -34,8 +36,9 @@ namespace EasyPay.Presentation.Controllers.Site.Admin
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(string id)
         {
-            var User = await _db.UserRipository.GetByIdAsync(id);
-            var UserToReturn = _mapper.Map<UserForDetailedDto>(User);
+            var User = await _db.UserRipository.GetManyAsync(p => p.Id == id, null, "Photos");
+            
+            var UserToReturn = _mapper.Map<UserForDetailedDto>(User.SingleOrDefault());
             return Ok(UserToReturn);
         }
     }
