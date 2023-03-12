@@ -13,6 +13,7 @@ using static System.Net.Mime.MediaTypeNames;
 using EasyPay.Services.Seed.Interface;
 using EasyPay.Services.Seed.Service;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -79,7 +80,8 @@ var doc = new OpenApiDocument()
 // Add services to the container.
 
 builder.Services.AddControllers();
-
+//---------------|Add automapper|----------------\\
+builder.Services.AddAutoMapper(typeof(Program));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(o =>

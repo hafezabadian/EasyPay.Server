@@ -1,6 +1,6 @@
 ﻿using EasyPay.Common.ErrorAndMessage;
 using EasyPay.Data.DatabaseContext;
-using EasyPay.Data.Dto.Site.Admin;
+using EasyPay.Data.Dto.Site.Admin.Users;
 using EasyPay.Data.Model;
 using EasyPay.Repo.Infrastructure;
 using EasyPay.Services.Auth.Interface;

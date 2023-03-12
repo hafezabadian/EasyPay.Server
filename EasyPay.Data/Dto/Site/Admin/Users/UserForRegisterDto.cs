@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyPay.Data.Dto.Site.Admin
+namespace EasyPay.Data.Dto.Site.Admin.Users
 {
     public class UserForRegisterDto
     {
